@@ -124,8 +124,28 @@ Trade-offs: it goes via Amazon's cloud, needs Wi-Fi on the Kindle, and isn't ins
 - **Show a notification after automatic processing.**
 
 ## Installation
-`calibre-customize -b <path to this folder>`, or build the zip and load it via
-`Preferences ▸ Plugins ▸ Load plugin from file`.
+
+**Prerequisites** (required for the KFX / PDOC Colorsoft cover route):
+1. **Amazon Kindle Previewer 3** — download and install it from Amazon (free). KFX files are built by
+   Kindle Previewer, so KFX conversion fails without it.
+2. **KFX Output** and **KFX Input** plugins — in calibre go to
+   **Preferences ▸ Plugins ▸ Get new plugins** ("Get plugins to enhance calibre"), search for and
+   install both.
+
+**Install this plugin — from the release zip:**
+3. **Preferences ▸ Advanced ▸ Plugins ▸ Load plugin from file**, and select
+   `calibre_kindle_cover_fixer-vX.XX.XX.zip` from the
+   [Releases](https://github.com/scotjam/calibre_kindle_cover_fixer/releases) page.
+4. **Restart calibre** once both plugins (KFX Output and this one) are installed.
+
+**Or from source:**
+```shell
+calibre-customize -b <path to this folder>
+```
+or build the zip and load it: `./zip_release.sh` then *Load plugin from file*. Restart calibre afterwards.
+
+After restarting, run the plugin menu ▸ **Set up KFX + PDOC sending** to apply the settings — it warns
+if Kindle Previewer 3 isn't detected.
 
 ## ASIN lookup
 Amazon actively blocks calibre's built-in Amazon metadata source (it times out and returns nothing
