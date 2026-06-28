@@ -39,11 +39,17 @@ NOT make the home-screen cover appear**, no matter what. The two things that *do
 2. **A valid ASIN for a book that exists on *your* Kindle's Amazon store** (kept as EBOK) — then the
    Colorsoft pulls the cover from Amazon's servers. Only works for titles actually sold on that store.
 
-**What this plugin does and doesn't do:** it automates embedding the cover/metadata into files and
-finding/storing ASINs. That covers route #2 (for Amazon-catalogue titles) and makes covers correct in
-the calibre library, other readers, and Send-to-Kindle. It does **not** set the PDOC/KFX send type
-(route #1) — that's a calibre conversion/output setting you choose when sending. For a mixed,
-non-Amazon library, route #1 (KFX + PDOC) is what actually shows covers on the Colorsoft.
+**What this plugin does:** it automates *both* routes.
+- **Route #1 (the Colorsoft fix):** *Set up KFX + PDOC sending* configures calibre's KFX Output to
+  produce **PDOC**, makes **KFX** the preferred output and the Kindle's preferred send format, and then
+  the plugin can **convert books to KFX/PDOC and send them** to a connected Kindle — automatically on
+  add (optional checkbox) or on demand via *Send selected to Kindle as KFX*. Requires the **KFX Output**
+  plugin and **Kindle Previewer 3**.
+- **Route #2:** it embeds the cover/metadata into the files and finds/stores the Amazon ASIN — helps for
+  Amazon-catalogue titles and makes covers correct in the calibre library, other readers, and
+  Send-to-Kindle.
+
+For a mixed, non-Amazon library, route #1 (KFX + PDOC) is what actually shows covers on the Colorsoft.
 
 ## Recommended workflow
 1. Download or add books and *Download metadata/cover* in calibre.
