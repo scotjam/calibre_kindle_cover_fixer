@@ -133,10 +133,10 @@ Trade-offs: it goes via Amazon's cloud, needs Wi-Fi on the Kindle, and isn't ins
    install both.
 
 **Install this plugin — from the release zip:**
-3. **Preferences ▸ Advanced ▸ Plugins ▸ Load plugin from file**, and select
+1. **Preferences ▸ Advanced ▸ Plugins ▸ Load plugin from file**, and select
    `calibre_kindle_cover_fixer-vX.XX.XX.zip` from the
    [Releases](https://github.com/scotjam/calibre_kindle_cover_fixer/releases) page.
-4. **Restart calibre** once both plugins (KFX Output and this one) are installed.
+2. **Restart calibre** once both plugins (KFX Output and this one) are installed.
 
 **Or from source:**
 ```shell
