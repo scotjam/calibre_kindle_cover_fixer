@@ -4,16 +4,22 @@
 > endorsement by, or affiliation with Amazon or Kindle**. "Amazon", "Kindle", and "Colorsoft" are
 > trademarks of their respective owners and are used here only to describe interoperability.
 
-Makes sideloaded book covers show on the **Kindle Colorsoft** (and other 2024+ Kindles) by doing,
-automatically, the two things those devices need:
+Helps sideloaded book covers show on Kindles.
+
+> **The only thing we found that reliably shows covers on modern Kindle Colorsoft firmware is the
+> KFX / Personal-Document (PDOC) route** (see *Important: the Colorsoft cover situation* below). The
+> plugin automates that, and can auto-convert + send books as KFX/PDOC.
+
+The plugin also does the two things below. These **may** help on some (older) Kindle versions, and
+they make covers correct in the calibre library, other readers, and Send-to-Kindle — but on a current
+Colorsoft they are **not** sufficient on their own:
 
 1. **Embed the cover + metadata into the book files.** Downloading metadata in calibre only updates
-   the *library*; the Kindle reads the cover from the *file*. This plugin writes the library cover and
+   the *library*; a Kindle reads the cover from the *file*. This plugin writes the library cover and
    metadata into the actual book files (`db.embed_metadata`).
-2. **Look up and store the Amazon ASIN.** The Colorsoft fetches covers from Amazon by ASIN and won't
-   fall back to the embedded cover. This plugin uses calibre's own metadata sources (incl. Amazon) to
-   find the Kindle ASIN and stores it as the `mobi-asin` / `amazon` identifier, which embedding then
-   writes into the file.
+2. **Look up and store the Amazon ASIN.** Some Kindles fetch covers from Amazon by ASIN. This plugin
+   uses calibre's metadata sources (and a real-browser lookup) to find the Kindle ASIN and stores it
+   as the `mobi-asin` / `amazon` identifier, which embedding then writes into the file.
 
 It runs **automatically whenever books are added/downloaded** (it listens for the library's
 `book_created` event, so it catches store-plugin downloads and manual adds alike), or on demand for
@@ -142,6 +148,5 @@ see *Important: the Colorsoft cover situation* above.)
   the text (lossy). So a PDF either stays cover-less (sent as-is, the default), is reflowed to KFX
   (tick "convert PDFs to KFX", lower quality but gets a cover), or is sent via Amazon's Send to Kindle
   with conversion (cloud; gets a cover).
-- Written against calibre's `db.new_api` (`add_listener`/`book_created`, `embed_metadata`,
-  `set_field`) and `identify()` with Qt5/Qt6 import guards. **Not yet exercised inside a running
-  calibre** — please verify; the `book_created` listener + worker→GUI threading is the part to watch.
+- Built against calibre's `db.new_api` (`add_listener`/`book_created`, `embed_metadata`, `set_field`)
+  and `identify()`, with Qt5/Qt6 import guards. Developed and used with calibre 9.x on Windows.
